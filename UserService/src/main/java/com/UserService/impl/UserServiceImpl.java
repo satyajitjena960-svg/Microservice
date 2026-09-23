@@ -36,11 +36,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(String id, User u) {
-        return false;
+        Optional<User> u1=userRepo.findById(id);
+        User u2=u1.get();
+       u2=u;
+       User u3=userRepo.save(u2);
+        return true;
     }
 
     @Override
     public boolean deleteUser(String id) {
+        userRepo.deleteById(id);
         return false;
     }
 }
